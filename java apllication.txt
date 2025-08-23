@@ -1,0 +1,73 @@
+package week4;
+
+public class project {
+	public static void main(String args[])
+	{
+
+	        if (args.length == 0) {
+	            System.out.println("Please provide employee id as argument.");
+	            return;
+	        }
+
+	        int empId = Integer.parseInt(args[0]);
+
+	        // Employee data
+	        int[] empNo = {1000,1001, 1002, 1003, 1004, 1005, 1006, 1007};
+	        String[] empName = {"Pavithiran","Ashish", "Sushma", "Rahul", "Chahat", "Ranjan", "Suman", "Tanmay"};
+	        String[] dept = {"development","R&D", "PM", "Acct", "Front Desk", "Engg", "Manufacturing", "PM"};
+	        char[] desigCode = {'d','e', 'c', 'k', 'r', 'm', 'e', 'c'};
+	        int[] basic = {50000,20000, 30000, 10000, 12000, 50000, 23000, 29000};
+	        int[] hra = {5000,8000, 12000, 8000, 6000, 20000, 9000, 12000};
+	        int[] it = {4000,3000, 9000, 1000, 2000, 20000, 4400, 10000};
+
+	        boolean found = false;
+
+	        for (int i = 0; i < empNo.length; i++) {
+	            if (empNo[i] == empId) {
+	                found = true;
+	                String designation = "";
+	                int da = 0;
+	                switch (desigCode[i]) {
+	                case 'd':
+                        designation = "manager";
+                        da = 22000;
+                        break;
+	                    case 'e':
+	                        designation = "Engineer";
+	                        da = 20000;
+	                        break;
+	                    case 'c':
+	                        designation = "Consultant";
+	                        da = 32000;
+	                        break;
+	                    case 'k':
+	                        designation = "Clerk";
+	                        da = 12000;
+	                        break;
+	                    case 'r':
+	                        designation = "Receptionist";
+	                        da = 15000;
+	                        break;
+	                    case 'm':
+	                        designation = "Manager";
+	                        da = 40000;
+	                        break;
+	                }
+	                int salary = basic[i] + hra[i] + da - it[i];
+	                // Table Header
+	                System.out.println("+----------+--------------+-----------------+-----------------+----------+");
+	                System.out.printf("| %-8s | %-12s | %-15s | %-15s | %-8s |%n",
+	                        "Emp No.", "Emp Name", "Department", "Designation", "Salary");
+	                System.out.println("+----------+--------------+-----------------+-----------------+----------+");
+	                // Table Row
+	                System.out.printf("| %-8d | %-12s | %-15s | %-15s | %-8d |%n",
+	                        empNo[i], empName[i], dept[i], designation, salary);
+	                System.out.println("+----------+--------------+-----------------+-----------------+----------+");
+	                break;
+	            }
+	        }
+	        if (!found) {
+	            System.out.println("There is no employee with empid : " + empId);
+	        }
+	    }
+	}
